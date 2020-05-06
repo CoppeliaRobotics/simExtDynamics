@@ -211,7 +211,7 @@ void vortexInfoHandler(const int level, const char *const format,va_list ap)
     simGetModuleInfo(LIBRARY_NAME,sim_moduleinfo_verbosity,nullptr,&plugin_verbosity);
     if (plugin_verbosity>=sim_verbosity_infos);
     {
-        std::cout << "simExt" << LIBRARY_NAME << " plugin info: info from Vortex: ";
+        std::cout << "simExt" << LIBRARY_NAME << ": info: info from Vortex: ";
         vprintf(format,ap);
     }
 }
@@ -222,7 +222,7 @@ void vortexWarningHandler(const int level, const char *const format,va_list ap)
     simGetModuleInfo(LIBRARY_NAME,sim_moduleinfo_verbosity,nullptr,&plugin_verbosity);
     if (plugin_verbosity>=sim_verbosity_warnings);
     {
-        std::cout << "simExt" << LIBRARY_NAME << " plugin warning: warning from Vortex: ";
+        std::cout << "simExt" << LIBRARY_NAME << ": warning: warning from Vortex: ";
         vprintf(format,ap);
     }
 }
@@ -233,7 +233,7 @@ void vortexErrorHandler(const int level, const char *const format,va_list ap)
     simGetModuleInfo(LIBRARY_NAME,sim_moduleinfo_verbosity,nullptr,&plugin_verbosity);
     if (plugin_verbosity>=sim_verbosity_errors);
     {
-        std::cout << "simExt" << LIBRARY_NAME << " plugin error: fatal error from Vortex: ";
+        std::cout << "simExt" << LIBRARY_NAME << ": error: fatal error from Vortex: ";
         vprintf(format,ap);
     }
 }

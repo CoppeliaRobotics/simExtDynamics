@@ -64,13 +64,13 @@ SIM_DLLEXPORT unsigned char simStart(void* reservedPointer,int reservedInt)
      if (simLib==NULL)
 	 {
          if (canOutputMsg(sim_verbosity_errors))
-            std::cout << "simExt" << LIBRARY_NAME << " plugin error: could not find or correctly load the CoppeliaSim library. Cannot start '" << LIBRARY_NAME << "' plugin.\n";
+            std::cout << "simExt" << LIBRARY_NAME << ": error: could not find or correctly load the CoppeliaSim library. Cannot start '" << LIBRARY_NAME << "' plugin.\n";
          return(0);
 	 }
      if (getSimProcAddresses(simLib)==0)
 	 {
          if (canOutputMsg(sim_verbosity_errors))
-            std::cout << "simExt" << LIBRARY_NAME << " plugin error: could not find all required functions in the CoppeliaSim library. Cannot start '" << LIBRARY_NAME << "' plugin.\n";
+            std::cout << "simExt" << LIBRARY_NAME << ": error: could not find all required functions in the CoppeliaSim library. Cannot start '" << LIBRARY_NAME << "' plugin.\n";
          unloadSimLibrary(simLib);
          return(0);
 	 }
@@ -80,7 +80,7 @@ SIM_DLLEXPORT unsigned char simStart(void* reservedPointer,int reservedInt)
      if (simVer<40000)
 	 {
          if (canOutputMsg(sim_verbosity_errors))
-            std::cout << "simExt" << LIBRARY_NAME << " plugin error: sorry, your CoppeliaSim copy is somewhat old. Cannot start '" << LIBRARY_NAME << "' plugin.\n";
+            std::cout << "simExt" << LIBRARY_NAME << ": error: sorry, your CoppeliaSim copy is somewhat old. Cannot start '" << LIBRARY_NAME << "' plugin.\n";
          unloadSimLibrary(simLib);
          return(0);
 	 }
@@ -122,7 +122,7 @@ SIM_DLLEXPORT char dynPlugin_startSimulation(int engine,int version,const float 
 	if ( (engine==sim_physics_bullet)&&(version==0) )
 	{
         if (canOutputMsg(sim_verbosity_infos))
-            std::cout << "simExt" << LIBRARY_NAME << " plugin info: initializing the " << ENGINE_NAME << " physics engine in plugin '" << LIBRARY_NAME << "'...\n";
+            std::cout << "simExt" << LIBRARY_NAME << ": info: initializing the " << ENGINE_NAME << " physics engine in plugin '" << LIBRARY_NAME << "'...\n";
 		dynWorld=new CRigidBodyContainerDyn_bullet278();
 	}
 #endif
@@ -131,7 +131,7 @@ SIM_DLLEXPORT char dynPlugin_startSimulation(int engine,int version,const float 
 	if ( (engine==sim_physics_bullet)&&(version==283) )
 	{
         if (canOutputMsg(sim_verbosity_infos))
-            std::cout << "simExt" << LIBRARY_NAME << " plugin info: initializing the " << ENGINE_NAME << " physics engine in plugin '" << LIBRARY_NAME << "'...\n";
+            std::cout << "simExt" << LIBRARY_NAME << ": info: initializing the " << ENGINE_NAME << " physics engine in plugin '" << LIBRARY_NAME << "'...\n";
 		dynWorld=new CRigidBodyContainerDyn_bullet283();
 	}
 #endif
@@ -140,7 +140,7 @@ SIM_DLLEXPORT char dynPlugin_startSimulation(int engine,int version,const float 
 	if ( (engine==sim_physics_ode)&&(version==0) )
 	{
         if (canOutputMsg(sim_verbosity_infos))
-            std::cout << "simExt" << LIBRARY_NAME << " plugin info: initializing the " << ENGINE_NAME << " physics engine in plugin '" << LIBRARY_NAME << "'...\n";
+            std::cout << "simExt" << LIBRARY_NAME << ": info: initializing the " << ENGINE_NAME << " physics engine in plugin '" << LIBRARY_NAME << "'...\n";
 		dynWorld=new CRigidBodyContainerDyn_ode();
 	}
 #endif
@@ -149,7 +149,7 @@ SIM_DLLEXPORT char dynPlugin_startSimulation(int engine,int version,const float 
 	if ( (engine==sim_physics_newton)&&(version==0) )
 	{
         if (canOutputMsg(sim_verbosity_infos))
-            std::cout << "simExt" << LIBRARY_NAME << " plugin info: initializing the " << ENGINE_NAME << " physics engine in plugin '" << LIBRARY_NAME << "'...\n";
+            std::cout << "simExt" << LIBRARY_NAME << ": info: initializing the " << ENGINE_NAME << " physics engine in plugin '" << LIBRARY_NAME << "'...\n";
 		dynWorld=new CRigidBodyContainerDyn_newton();
 	}
 #endif
@@ -158,7 +158,7 @@ SIM_DLLEXPORT char dynPlugin_startSimulation(int engine,int version,const float 
 	if ( (engine==sim_physics_vortex)&&(version==0) )
 	{
         if (canOutputMsg(sim_verbosity_infos))
-            std::cout << "simExt" << LIBRARY_NAME << " plugin info: initializing the " << ENGINE_NAME << " physics engine in plugin '" << LIBRARY_NAME << "'...\n";
+            std::cout << "simExt" << LIBRARY_NAME << ": info: initializing the " << ENGINE_NAME << " physics engine in plugin '" << LIBRARY_NAME << "'...\n";
 		dynWorld=new CRigidBodyContainerDyn_vortex();
 		((CRigidBodyContainerDyn_vortex*)dynWorld)->licenseCheck();
 	}
@@ -171,9 +171,9 @@ SIM_DLLEXPORT char dynPlugin_startSimulation(int engine,int version,const float 
             int	data1[4];
             char versionStr[256];
             dynWorld->getEngineInfo(engine,data1,versionStr,NULL);
-            std::cout << "Engine version: " << versionStr << "\n";
-            std::cout << "Plugin version: " << DYNAMICS_PLUGIN_VERSION << "\n";
-            std::cout << "Initialization successful.\n";
+            std::cout << "    Engine version: " << versionStr << "\n";
+            std::cout << "    Plugin version: " << DYNAMICS_PLUGIN_VERSION << "\n";
+            std::cout << "    Initialization successful.\n";
         }
 	}
 
