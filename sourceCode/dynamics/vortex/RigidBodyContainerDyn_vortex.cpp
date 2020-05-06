@@ -3,6 +3,7 @@
 #include "RigidBodyDyn_vortex.h"
 #include "ConstraintDyn_vortex.h"
 #include "simLib.h"
+#include <iostream>
 #include "Vx/VxFrame.h"
 #include "Vx/VxUniverse.h"
 #include "Vx/VxCollisionGeometry.h"
@@ -18,6 +19,7 @@
 #include "Vx/VxConstraint.h"
 #include "Vx/VxRequest.h"
 #include "Vx/VxIntersectFilter.h"
+#include "Vx/VxMessage.h"
 #include "Vx/VxPrismatic.h"
 #include "Vx/VxVersion.h"
 #include "Vx/VxBox.h"
@@ -205,20 +207,35 @@ public:
 
 void vortexInfoHandler(const int level, const char *const format,va_list ap)
 {
-	printf("INFO FROM VORTEX: ");
-	vprintf(format,ap);
+    int plugin_verbosity = sim_verbosity_default;
+    simGetModuleInfo(LIBRARY_NAME,sim_moduleinfo_verbosity,nullptr,&plugin_verbosity);
+    if (plugin_verbosity>=sim_verbosity_infos);
+    {
+        std::cout << "simExt" << LIBRARY_NAME << " plugin info: info from Vortex: ";
+        vprintf(format,ap);
+    }
 }
 
 void vortexWarningHandler(const int level, const char *const format,va_list ap)
 {
-	printf("WARNING FROM VORTEX: ");
-	vprintf(format,ap);
+    int plugin_verbosity = sim_verbosity_default;
+    simGetModuleInfo(LIBRARY_NAME,sim_moduleinfo_verbosity,nullptr,&plugin_verbosity);
+    if (plugin_verbosity>=sim_verbosity_warnings);
+    {
+        std::cout << "simExt" << LIBRARY_NAME << " plugin warning: warning from Vortex: ";
+        vprintf(format,ap);
+    }
 }
 
 void vortexErrorHandler(const int level, const char *const format,va_list ap)
 {
-	printf("FATAL ERROR FROM VORTEX: ");
-	vprintf(format,ap);
+    int plugin_verbosity = sim_verbosity_default;
+    simGetModuleInfo(LIBRARY_NAME,sim_moduleinfo_verbosity,nullptr,&plugin_verbosity);
+    if (plugin_verbosity>=sim_verbosity_errors);
+    {
+        std::cout << "simExt" << LIBRARY_NAME << " plugin error: fatal error from Vortex: ";
+        vprintf(format,ap);
+    }
 }
 
 Vx::VxPart* getCollisionGeometryPart(Vx::VxCollisionGeometry* cg)
@@ -240,7 +257,19 @@ int CRigidBodyContainerDyn_vortex::getEngineInfo(int& engine,int data1[4],char* 
 
 CRigidBodyContainerDyn_vortex::CRigidBodyContainerDyn_vortex()
 {
-	_dynamicsCalculationPasses=0;
+    int plugin_verbosity = sim_verbosity_default;
+    simGetModuleInfo(LIBRARY_NAME,sim_moduleinfo_verbosity,nullptr,&plugin_verbosity);
+    if (plugin_verbosity==sim_verbosity_none)
+        Vx::LogSetLevel(Vx::kOff);
+    if (plugin_verbosity==sim_verbosity_errors)
+        Vx::LogSetLevel(Vx::kError);
+    if (plugin_verbosity==sim_verbosity_warnings)
+        Vx::LogSetLevel(Vx::kWarn);
+    if (plugin_verbosity==sim_verbosity_infos)
+        Vx::LogSetLevel(Vx::kInfo);
+    if (plugin_verbosity==sim_verbosity_debug)
+        Vx::LogSetLevel(Vx::kAll);
+    _dynamicsCalculationPasses=0;
     _allRigidBodiesIndex.resize(CRigidBodyContainerDyn::get3dObjectIdEnd()-CRigidBodyContainerDyn::get3dObjectIdStart(),nullptr);
     _allConstraintsIndex.resize(CRigidBodyContainerDyn::get3dObjectIdEnd()-CRigidBodyContainerDyn::get3dObjectIdStart(),nullptr);
 

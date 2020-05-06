@@ -46,6 +46,11 @@ libsimExtDynamicsNewton.so.1.0
 libsimExtDynamicsNewton.so.1.0.0
 debug
 release
+release_bullet2_78
+release_bullet2_83
+release_newton
+release_vortex
+release_ode
 object_script.*.Debug
 object_script.*.Release
 build-*
