@@ -36,6 +36,14 @@ libsimExtDynamicsOde.so
 libsimExtDynamicsOde.so.1
 libsimExtDynamicsOde.so.1.0
 libsimExtDynamicsOde.so.1.0.0
+libsimExtDynamicsVortex.1.0.0.dylib
+libsimExtDynamicsVortex.1.0.dylib
+libsimExtDynamicsVortex.1.dylib
+libsimExtDynamicsVortex.dylib
+libsimExtDynamicsVortex.so
+libsimExtDynamicsVortex.so.1
+libsimExtDynamicsVortex.so.1.0
+libsimExtDynamicsVortex.so.1.0.0
 libsimExtDynamicsNewton.1.0.0.dylib
 libsimExtDynamicsNewton.1.0.dylib
 libsimExtDynamicsNewton.1.dylib
