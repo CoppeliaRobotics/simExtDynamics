@@ -89,7 +89,7 @@ BULLET_2_83_ENGINE {
         LIBS += $${BULLET_BUILD_DIR}/lib/Release/BulletCollision.lib
         LIBS += $${BULLET_BUILD_DIR}/lib/Release/LinearMath.lib
     }
-    unix:!macx {
+    unix {
         LIBS += $${BULLET_BUILD_DIR}/src/BulletDynamics/libBulletDynamics.a
         LIBS += $${BULLET_BUILD_DIR}/src/BulletCollision/libBulletCollision.a
         LIBS += $${BULLET_BUILD_DIR}/src/LinearMath/libLinearMath.a
