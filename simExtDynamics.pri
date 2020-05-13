@@ -66,7 +66,7 @@ BULLET_2_78_ENGINE {
     #CONFIG += DOUBLE_PRECISION
     DEFINES += INCLUDE_BULLET_2_78_CODE
     DEFINES += DYNAMICS_PLUGIN_VERSION=11
-	DEFINES += LIBRARY_NAME=\\\"DynamicsBullet_2_78\\\"
+    DEFINES += LIBRARY_NAME=\\\"DynamicsBullet-2-78\\\"
 	DEFINES += ENGINE_NAME=\\\"Bullet\\\"
 
     INCLUDEPATH += "sourceCode/dynamics/bullet_2_78"
@@ -78,7 +78,7 @@ BULLET_2_83_ENGINE {
     #CONFIG += DOUBLE_PRECISION
     DEFINES += INCLUDE_BULLET_2_83_CODE
     DEFINES += DYNAMICS_PLUGIN_VERSION=11
-	DEFINES += LIBRARY_NAME=\\\"DynamicsBullet_2_83\\\"
+    DEFINES += LIBRARY_NAME=\\\"DynamicsBullet-2-83\\\"
 	DEFINES += ENGINE_NAME=\\\"Bullet\\\"
     *-msvc* {
         QMAKE_CFLAGS_RELEASE += -MT
