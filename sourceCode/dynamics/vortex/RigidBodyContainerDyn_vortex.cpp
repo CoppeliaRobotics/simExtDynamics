@@ -207,35 +207,29 @@ public:
 
 void vortexInfoHandler(const int level, const char *const format,va_list ap)
 {
-    int plugin_verbosity = sim_verbosity_default;
-    simGetModuleInfo(LIBRARY_NAME,sim_moduleinfo_verbosity,nullptr,&plugin_verbosity);
-    if (plugin_verbosity>=sim_verbosity_infos);
-    {
-        std::cout << "simExt" << LIBRARY_NAME << ": info: info from Vortex: ";
-        vprintf(format,ap);
-    }
+    char buff[2000];
+    std::string tmp("msg from Vortex: ");
+    tmp+=format;
+    vsnprintf(buff,sizeof(buff),tmp.c_str(),ap);
+    simAddLog(LIBRARY_NAME,sim_verbosity_infos,buff);
 }
 
 void vortexWarningHandler(const int level, const char *const format,va_list ap)
 {
-    int plugin_verbosity = sim_verbosity_default;
-    simGetModuleInfo(LIBRARY_NAME,sim_moduleinfo_verbosity,nullptr,&plugin_verbosity);
-    if (plugin_verbosity>=sim_verbosity_warnings);
-    {
-        std::cout << "simExt" << LIBRARY_NAME << ": warning: warning from Vortex: ";
-        vprintf(format,ap);
-    }
+    char buff[2000];
+    std::string tmp("msg from Vortex: ");
+    tmp+=format;
+    vsnprintf(buff,sizeof(buff),tmp.c_str(),ap);
+    simAddLog(LIBRARY_NAME,sim_verbosity_warnings,buff);
 }
 
 void vortexErrorHandler(const int level, const char *const format,va_list ap)
 {
-    int plugin_verbosity = sim_verbosity_default;
-    simGetModuleInfo(LIBRARY_NAME,sim_moduleinfo_verbosity,nullptr,&plugin_verbosity);
-    if (plugin_verbosity>=sim_verbosity_errors);
-    {
-        std::cout << "simExt" << LIBRARY_NAME << ": error: fatal error from Vortex: ";
-        vprintf(format,ap);
-    }
+    char buff[2000];
+    std::string tmp("msg from Vortex: ");
+    tmp+=format;
+    vsnprintf(buff,sizeof(buff),tmp.c_str(),ap);
+    simAddLog(LIBRARY_NAME,sim_verbosity_errors,buff);
 }
 
 Vx::VxPart* getCollisionGeometryPart(Vx::VxCollisionGeometry* cg)
@@ -261,13 +255,13 @@ CRigidBodyContainerDyn_vortex::CRigidBodyContainerDyn_vortex()
     simGetModuleInfo(LIBRARY_NAME,sim_moduleinfo_verbosity,nullptr,&plugin_verbosity);
     if (plugin_verbosity==sim_verbosity_none)
         Vx::LogSetLevel(Vx::kOff);
-    if (plugin_verbosity==sim_verbosity_errors)
+    if (plugin_verbosity>=sim_verbosity_errors)
         Vx::LogSetLevel(Vx::kError);
-    if (plugin_verbosity==sim_verbosity_warnings)
+    if (plugin_verbosity>=sim_verbosity_warnings)
         Vx::LogSetLevel(Vx::kWarn);
-    if (plugin_verbosity==sim_verbosity_infos)
+    if (plugin_verbosity>=sim_verbosity_infos)
         Vx::LogSetLevel(Vx::kInfo);
-    if (plugin_verbosity==sim_verbosity_debug)
+    if (plugin_verbosity>=sim_verbosity_debug)
         Vx::LogSetLevel(Vx::kAll);
     _dynamicsCalculationPasses=0;
     _allRigidBodiesIndex.resize(CRigidBodyContainerDyn::get3dObjectIdEnd()-CRigidBodyContainerDyn::get3dObjectIdStart(),nullptr);
