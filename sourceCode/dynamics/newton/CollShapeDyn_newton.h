@@ -13,13 +13,13 @@
 class CCollShapeDyn_newton : public CCollShapeDyn
 {
 public:
-	CCollShapeDyn_newton(CDummyShape* shape,CDummyGeomProxy* geomData,bool willBeStatic, NewtonWorld* const world); // newton
-	virtual ~CCollShapeDyn_newton();
+    CCollShapeDyn_newton(CDummyShape* shape,CDummyGeomProxy* geomData,bool willBeStatic, NewtonWorld* const world); // newton
+    virtual ~CCollShapeDyn_newton();
 
-	NewtonCollision* getNewtonCollision();
+    NewtonCollision* getNewtonCollision();
 
-protected:	
+protected:    
     std::vector<float> _newtonHeightfieldData;
-	NewtonCollision* _shape;
-	void _setNewtonParameters(CDummyShape* shape);
+    NewtonCollision* _shape;
+    void _setNewtonParameters(CDummyShape* shape);
 };

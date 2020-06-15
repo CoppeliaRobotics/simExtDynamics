@@ -13,22 +13,22 @@
 class CParticleDyn_newton : public CParticleDyn
 {
 public:
-	CParticleDyn_newton(const C3Vector& position,const C3Vector& velocity,int objType,float size,float massOverVolume,float killTime,float addColor[3]);
-	virtual ~CParticleDyn_newton();
+    CParticleDyn_newton(const C3Vector& position,const C3Vector& velocity,int objType,float size,float massOverVolume,float killTime,float addColor[3]);
+    virtual ~CParticleDyn_newton();
 
-	bool addToEngineIfNeeded(float parameters[18],int objectID);
-	void handleAntiGravityForces_andFluidFrictionForces(const C3Vector& gravity,float linearFluidFrictionCoeff,float quadraticFluidFrictionCoeff,float linearAirFrictionCoeff,float quadraticAirFrictionCoeff);
-	void updatePosition();
-	void removeFromEngine();
+    bool addToEngineIfNeeded(float parameters[18],int objectID);
+    void handleAntiGravityForces_andFluidFrictionForces(const C3Vector& gravity,float linearFluidFrictionCoeff,float quadraticFluidFrictionCoeff,float linearAirFrictionCoeff,float quadraticAirFrictionCoeff);
+    void updatePosition();
+    void removeFromEngine();
 
-	static void TransformCallback(const NewtonBody* body, const dFloat* matrix, int threadIndex);
-	static void ApplyExtenalForceCallback(const NewtonBody* body, dFloat timestep, int threadIndex);
+    static void TransformCallback(const NewtonBody* body, const dFloat* matrix, int threadIndex);
+    static void ApplyExtenalForceCallback(const NewtonBody* body, dFloat timestep, int threadIndex);
 
-protected:	
-	NewtonBody* _newtonBody;
-	C3Vector m_externForce;
-	bool _ignoreGravity;
-	float _particleMass;
-	int _particleObjectID_withOffset;
-	void* _newtonParticleUserData[5];// particleObjectID,this,stat. friction,kin. friction, restitution
+protected:    
+    NewtonBody* _newtonBody;
+    C3Vector m_externForce;
+    bool _ignoreGravity;
+    float _particleMass;
+    int _particleObjectID_withOffset;
+    void* _newtonParticleUserData[5];// particleObjectID,this,stat. friction,kin. friction, restitution
 };

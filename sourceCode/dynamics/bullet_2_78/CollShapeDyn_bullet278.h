@@ -6,13 +6,13 @@
 class CCollShapeDyn_bullet278 : public CCollShapeDyn
 {
 public:
-	CCollShapeDyn_bullet278(CDummyGeomProxy* geomData); // Bullet
-	virtual ~CCollShapeDyn_bullet278();
+    CCollShapeDyn_bullet278(CDummyGeomProxy* geomData); // Bullet
+    virtual ~CCollShapeDyn_bullet278();
 
-	btCollisionShape* getBtCollisionShape();
+    btCollisionShape* getBtCollisionShape();
 
-protected:	
-	btTriangleIndexVertexArray* _indexVertexArrays; // for meshes
-	std::vector<btCollisionShape*> _compoundChildShapes;
-	btCollisionShape* _collisionShape;
+protected:    
+    btTriangleIndexVertexArray* _indexVertexArrays; // for meshes
+    std::vector<btCollisionShape*> _compoundChildShapes;
+    btCollisionShape* _collisionShape;
 };

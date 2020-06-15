@@ -6,21 +6,21 @@
 class CParticleContainer
 {
 public:
-	CParticleContainer();
-	virtual ~CParticleContainer();
+    CParticleContainer();
+    virtual ~CParticleContainer();
 
-	int addObject(CParticleObject* it);
-	CParticleObject* getObject(int objectID,bool getAlsoTheOnesFlaggedForDestruction);
-	void removeAllObjects();
-	void removeObject(int objectID);
-	void** getParticles(int index,int* particlesCount,int* objectType,float** cols);
+    int addObject(CParticleObject* it);
+    CParticleObject* getObject(int objectID,bool getAlsoTheOnesFlaggedForDestruction);
+    void removeAllObjects();
+    void removeObject(int objectID);
+    void** getParticles(int index,int* particlesCount,int* objectType,float** cols);
 
-	bool addParticlesIfNeeded();
-	void removeKilledParticles();
-	void removeAllParticles();
-	void updateParticlesPosition(float simulationTime);
+    bool addParticlesIfNeeded();
+    void removeKilledParticles();
+    void removeAllParticles();
+    void updateParticlesPosition(float simulationTime);
 
-	void handleAntiGravityForces_andFluidFrictionForces(const C3Vector& gravity);
+    void handleAntiGravityForces_andFluidFrictionForces(const C3Vector& gravity);
 
 private:
     std::vector<CParticleObject*> _allObjects; // can contain nullptr!
