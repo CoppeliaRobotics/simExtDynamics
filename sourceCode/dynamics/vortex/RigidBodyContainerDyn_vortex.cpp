@@ -399,29 +399,51 @@ void CRigidBodyContainerDyn_vortex::licenseCheck()
 {
     static bool done=false;
     static bool licensePresent=false;
+
     if (!done)
     {
+        simAddLog(LIBRARY_NAME,sim_verbosity_loadinfos,Vx::VxGetVersion());
+        std::string year(Vx::VxGetVersion(),Vx::VxGetVersion()+4);
+        printf("Year: %s\n",year.c_str());
+        printf("Year2: %i\n",std::stoi(year));
+
         _checkingLicense=true;
-        Vx::VxPart* partDynamic=new Vx::VxPart(1.0);
-        _vortexWorld->addPart(partDynamic);
-        Vx::VxPart* partStatic=new Vx::VxPart(1.0);
-        _vortexWorld->addPart(partStatic);
-        partStatic->setControl(Vx::VxPart::kControlStatic);
-        Vx::VxCollisionGeometry* cgDynamic=new Vx::VxCollisionGeometry(new Vx::VxBox(C3Vector2VxVector3(C3Vector(0.1f,0.1f,0.1f))),nullptr);
-        partDynamic->addCollisionGeometry(cgDynamic);
-        Vx::VxCollisionGeometry* cgStatic=new Vx::VxCollisionGeometry(new Vx::VxBox(C3Vector2VxVector3(C3Vector(0.1f,0.1f,0.1f))),nullptr);
-        partStatic->addCollisionGeometry(cgStatic);
-        partDynamic->setPosition(C3Vector2VxVector3(C3Vector(0,0,100.0)));
-        partStatic->setPosition(C3Vector2VxVector3(C3Vector(0,0,99.0)));
-        Vx::VxFrame::currentInstance()->setTimeStep(0.1);
-        for (int i=0;i<10;i++)
-            Vx::VxFrame::currentInstance()->step();
-        double zCoord=partDynamic->getTransform().t()[2];
-        _vortexWorld->removePart(partDynamic);
-        _vortexWorld->removePart(partStatic);
-        delete partDynamic;
-        delete partStatic;
-        licensePresent=(zCoord>98.0);
+        if (std::stoi(year)<=2019)
+        {
+            Vx::VxPart* partDynamic=new Vx::VxPart(1.0);
+            _vortexWorld->addPart(partDynamic);
+            Vx::VxPart* partStatic=new Vx::VxPart(1.0);
+            _vortexWorld->addPart(partStatic);
+            partStatic->setControl(Vx::VxPart::kControlStatic);
+            Vx::VxCollisionGeometry* cgDynamic=new Vx::VxCollisionGeometry(new Vx::VxBox(C3Vector2VxVector3(C3Vector(0.1f,0.1f,0.1f))),nullptr);
+            partDynamic->addCollisionGeometry(cgDynamic);
+            Vx::VxCollisionGeometry* cgStatic=new Vx::VxCollisionGeometry(new Vx::VxBox(C3Vector2VxVector3(C3Vector(0.1f,0.1f,0.1f))),nullptr);
+            partStatic->addCollisionGeometry(cgStatic);
+            partDynamic->setPosition(C3Vector2VxVector3(C3Vector(0,0,100.0)));
+            partStatic->setPosition(C3Vector2VxVector3(C3Vector(0,0,99.0)));
+            Vx::VxFrame::currentInstance()->setTimeStep(0.1);
+            for (int i=0;i<10;i++)
+                Vx::VxFrame::currentInstance()->step();
+            double zCoord=partDynamic->getTransform().t()[2];
+            _vortexWorld->removePart(partDynamic);
+            _vortexWorld->removePart(partStatic);
+            delete partDynamic;
+            delete partStatic;
+            licensePresent=(zCoord>98.0);
+        }
+        else
+        {
+            Vx::VxPart* partDynamic=new Vx::VxPart(1.0);
+            _vortexWorld->addPart(partDynamic);
+            partDynamic->setPosition(C3Vector2VxVector3(C3Vector(0,0,100.0)));
+            Vx::VxFrame::currentInstance()->setTimeStep(0.1);
+            for (int i=0;i<10;i++)
+                Vx::VxFrame::currentInstance()->step();
+            double zCoord=partDynamic->getTransform().t()[2];
+            _vortexWorld->removePart(partDynamic);
+            delete partDynamic;
+            licensePresent=(zCoord<99.0);
+        }
         done=true;
         _checkingLicense=false;
     }
