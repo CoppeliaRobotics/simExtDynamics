@@ -32,6 +32,7 @@ CONFIG += shared
 
 *-clang* {
     QMAKE_CXXFLAGS += -Wno-narrowing
+    QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.13
 }
 
 win32 {
