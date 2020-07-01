@@ -404,8 +404,6 @@ void CRigidBodyContainerDyn_vortex::licenseCheck()
     {
         simAddLog(LIBRARY_NAME,sim_verbosity_loadinfos,Vx::VxGetVersion());
         std::string year(Vx::VxGetVersion(),Vx::VxGetVersion()+4);
-        printf("Year: %s\n",year.c_str());
-        printf("Year2: %i\n",std::stoi(year));
 
         _checkingLicense=true;
         if (std::stoi(year)<=2019)
