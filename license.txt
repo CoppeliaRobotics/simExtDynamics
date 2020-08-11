@@ -6,9 +6,9 @@ under the same terms of the files in the parent directory otherwise.
 
 -------------------------------------------------------------------
 simExtDynamics, based on the 2016 GPL version of the dynamics plugin
-from Coppelia Robotics GmbH
+from Coppelia Robotics AG
 
-Copyright (C) 2009-2020 Coppelia Robotics GmbH / Marc Freese
+Copyright (C) 2009-2020 Coppelia Robotics AG / Marc Freese
 Copyright (C) 2019 Robot Nordic ApS
 
 All rights reserved.
@@ -22,7 +22,7 @@ the Free Software Foundation, either version 2 of the License, or
 
 THOSE FILES ARE DISTRIBUTED "AS IS", WITHOUT ANY EXPRESS OR IMPLIED
 WARRANTY. THE USER WILL USE IT AT HIS/HER OWN RISK. THE ORIGINAL
-AUTHORS AND COPPELIA ROBOTICS GMBH WILL NOT BE LIABLE FOR INJURIES,
+AUTHORS AND COPPELIA ROBOTICS AG WILL NOT BE LIABLE FOR INJURIES,
 DEATHS, DATA LOSS, DAMAGES, LOSS OF PROFITS OR ANY OTHER KIND OF LOSS
 WHILE USING OR MISUSING THIS SOFTWARE.
 
