@@ -2,7 +2,7 @@ TEMPLATE = lib
 QT -= core
 QT -= gui
 DEFINES -= UNICODE
-CONFIG += shared
+CONFIG += shared plugin
 
 *-msvc* {
     QMAKE_CXXFLAGS += -O2
