@@ -63,11 +63,11 @@ INCLUDEPATH += "../include"
 INCLUDEPATH += "../common"
 
 BULLET_2_78_ENGINE {
-    TARGET = simExtDynamicsBullet-2-78
+    TARGET = simExtBullet-2-78
     #CONFIG += DOUBLE_PRECISION
     DEFINES += INCLUDE_BULLET_2_78_CODE
     DEFINES += DYNAMICS_PLUGIN_VERSION=11
-    DEFINES += LIBRARY_NAME=\\\"DynamicsBullet-2-78\\\"
+    DEFINES += LIBRARY_NAME=\\\"Bullet-2-78\\\"
     DEFINES += ENGINE_NAME=\\\"Bullet\\\"
 
     INCLUDEPATH += "sourceCode/dynamics/bullet_2_78"
@@ -75,11 +75,11 @@ BULLET_2_78_ENGINE {
 }
 
 BULLET_2_83_ENGINE {
-    TARGET = simExtDynamicsBullet-2-83
+    TARGET = simExtBullet-2-83
     #CONFIG += DOUBLE_PRECISION
     DEFINES += INCLUDE_BULLET_2_83_CODE
     DEFINES += DYNAMICS_PLUGIN_VERSION=11
-    DEFINES += LIBRARY_NAME=\\\"DynamicsBullet-2-83\\\"
+    DEFINES += LIBRARY_NAME=\\\"Bullet-2-83\\\"
     DEFINES += ENGINE_NAME=\\\"Bullet\\\"
     *-msvc* {
         QMAKE_CFLAGS_RELEASE += -MT
@@ -101,11 +101,11 @@ BULLET_2_83_ENGINE {
 }
 
 ODE_ENGINE {
-    TARGET = simExtDynamicsOde
+    TARGET = simExtODE
     #CONFIG += DOUBLE_PRECISION
     DEFINES += INCLUDE_ODE_CODE
     DEFINES += DYNAMICS_PLUGIN_VERSION=12
-    DEFINES += LIBRARY_NAME=\\\"DynamicsOde\\\"
+    DEFINES += LIBRARY_NAME=\\\"ODE\\\"
     DEFINES += ENGINE_NAME=\\\"ODE\\\"
     DEFINES += dNODEBUG
     DEFINES += dLIBCCD_ENABLED
@@ -126,12 +126,12 @@ ODE_ENGINE {
 }
 
 NEWTON_ENGINE {
-    TARGET = simExtDynamicsNewton
+    TARGET = simExtNewton
     #CONFIG += DOUBLE_PRECISION
     #CONFIG += USE_THREAD_EMULATION # not recomended. Use only if you need to handle Newton contacts in a contact callback script
     DEFINES += INCLUDE_NEWTON_CODE
     DEFINES += DYNAMICS_PLUGIN_VERSION=5
-    DEFINES += LIBRARY_NAME=\\\"DynamicsNewton\\\"
+    DEFINES += LIBRARY_NAME=\\\"Newton\\\"
     DEFINES += ENGINE_NAME=\\\"Newton\\\"
     DEFINES += _CUSTOM_JOINTS_STATIC_LIB
     DEFINES += _NEWTON_STATIC_LIB
@@ -162,13 +162,13 @@ NEWTON_ENGINE {
 }
 
 VORTEX_ENGINE {
-    TARGET = simExtDynamicsVortex
+    TARGET = simExtVortex
     CONFIG += DOUBLE_PRECISION
     CONFIG += c++11
     DEFINES += INCLUDE_VORTEX_CODE
     DEFINES += VX_DLL
     DEFINES += DYNAMICS_PLUGIN_VERSION=12
-    DEFINES += LIBRARY_NAME=\\\"DynamicsVortex\\\"
+    DEFINES += LIBRARY_NAME=\\\"Vortex\\\"
     DEFINES += ENGINE_NAME=\\\"Vortex\\\"
     win32 {
         LIBS += "$${VORTEX_LIBPATH}/VxCore.lib"
