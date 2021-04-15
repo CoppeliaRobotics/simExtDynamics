@@ -25,7 +25,7 @@ SIM_DLLEXPORT int dynPlugin_getParticleObjectOtherFloatsPerItem(int objectHandle
 SIM_DLLEXPORT float* dynPlugin_getContactPoints(int* count);
 SIM_DLLEXPORT void** dynPlugin_getParticles(int index,int* particlesCount,int* objectType,float** cols);
 SIM_DLLEXPORT char dynPlugin_getParticleData(const void* particle,float* pos,float* size,int* objectType,float** additionalColor);
-SIM_DLLEXPORT char dynPlugin_getContactForce(int dynamicPass,int objectHandle,int index,int objectHandles[2],float contactInfo[6]);
+SIM_DLLEXPORT char dynPlugin_getContactForce(int dynamicPass,int objectHandle,int index,int objectHandles[2],float* contactInfo);
 SIM_DLLEXPORT void dynPlugin_reportDynamicWorldConfiguration(int totalPassesCount,char doNotApplyJointIntrinsicPositions,float simulationTime);
 SIM_DLLEXPORT int dynPlugin_getDynamicStepDivider();
 SIM_DLLEXPORT int dynPlugin_getEngineInfo(int* engine,int* data1,char* data2,char* data3);

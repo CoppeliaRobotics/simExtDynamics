@@ -257,7 +257,7 @@ SIM_DLLEXPORT char dynPlugin_getParticleData(const void* particle,float* pos,flo
     return(((CParticleDyn*)particle)->getRenderData(pos,size,objectType,additionalColor));
 }
 
-SIM_DLLEXPORT char dynPlugin_getContactForce(int dynamicPass,int objectHandle,int index,int objectHandles[2],float contactInfo[6])
+SIM_DLLEXPORT char dynPlugin_getContactForce(int dynamicPass,int objectHandle,int index,int objectHandles[2],float* contactInfo)
 {
     if (dynWorld!=NULL)
         return(dynWorld->getContactForce(dynamicPass,objectHandle,index,objectHandles,contactInfo));
