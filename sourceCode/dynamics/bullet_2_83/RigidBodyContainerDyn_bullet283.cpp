@@ -282,6 +282,7 @@ void CRigidBodyContainerDyn_bullet283::addBulletContactPoints(int dynamicPassNum
             float force=pt.m_appliedImpulse/(forceScaling*dynStepSize); // ********** SCALING
             C3Vector d(pt.m_normalWorldOnB.x(),pt.m_normalWorldOnB.y(),pt.m_normalWorldOnB.z());
             ci.directionAndAmplitude=d*force;
+            /*
             if (pt.m_lateralFrictionInitialized)
             {
                 float ff1=pt.m_appliedImpulseLateral1/(forceScaling*dynStepSize); // ********** SCALING
@@ -292,6 +293,7 @@ void CRigidBodyContainerDyn_bullet283::addBulletContactPoints(int dynamicPassNum
                 // pt.m_appliedImpulseLateral1, pt.m_appliedImpulseLateral2, pt.m_lateralFrictionDir1 and pt.m_lateralFrictionDir2
                 // appear to be zero, as if there was no friction... ?
             }
+            */
             ci.surfaceNormal=d;
             ci.subPassNumber=dynamicPassNumber;
             _contactInfo.push_back(ci);
