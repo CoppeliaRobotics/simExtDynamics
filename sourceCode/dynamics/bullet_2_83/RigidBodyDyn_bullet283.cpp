@@ -101,6 +101,8 @@ CRigidBodyDyn_bullet283::CRigidBodyDyn_bullet283(CDummyShape* shape,CCollShapeDy
     bulletWorld->addRigidBody(_rigidBody);
     if (deactivate)
         _rigidBody->setActivationState(ISLAND_SLEEPING);
+    else
+        _rigidBody->setActivationState(DISABLE_DEACTIVATION); // 11.05.2021
 }
 
 CRigidBodyDyn_bullet283::~CRigidBodyDyn_bullet283()
