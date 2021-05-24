@@ -45,7 +45,7 @@ if(UNIX AND NOT APPLE)
 endif()
 
 if(APPLE)
-    add_definitions(_MACOSX_VER)
+    add_definitions(-D_MACOSX_VER)
 endif()
 
 include_directories(sourceCode)
