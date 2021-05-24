@@ -29,8 +29,11 @@ endif()
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     if(CMAKE_CXX_COMPILER_FRONTEND_VARIANT STREQUAL "MSVC")
         # using clang with clang-cl front end
-    elseif(CMAKE_CXX_COMPILER_FRONTEND_VARIANT STREQUAL "GNU")
+    #elseif(CMAKE_CXX_COMPILER_FRONTEND_VARIANT STREQUAL "GNU")
+    else()
         # using clang with regular front end
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse -msse2 -msse3 -msse4 -mfpmath=sse -ffast-math -freciprocal-math -funsafe-math-optimizations")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpermissive -Wno-narrowing")
     endif()
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     # using GCC
