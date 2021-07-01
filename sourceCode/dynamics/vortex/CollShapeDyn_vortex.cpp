@@ -168,7 +168,7 @@ CCollShapeDyn_vortex::CCollShapeDyn_vortex(CDummyShape* shape,CDummyGeomProxy* g
 
                     Vx::VxTransform tm;
                     Vx::VxQuaternion quat(xxx.Q(0), xxx.Q(1), xxx.Q(2), xxx.Q(3));
-                    tm.makeRotationFromQuaternion(quat);
+                    tm.makeRotation(quat);
                     tm.setTranslation(C3Vector2VxVector3(xxx.X));
 
                     Vx::VxCollisionGeometry* vortexCollisionGeom=_createVortexCollisionGeometry(universe,geomInfo,vortexGeom,tm,floatParams,intParams);
@@ -206,7 +206,7 @@ CCollShapeDyn_vortex::CCollShapeDyn_vortex(CDummyShape* shape,CDummyGeomProxy* g
 
                 Vx::VxTransform tm;
                 Vx::VxQuaternion quat(xxx.Q(0), xxx.Q(1), xxx.Q(2), xxx.Q(3));
-                tm.makeRotationFromQuaternion(quat);
+                tm.makeRotation(quat);
                 tm.setTranslation(C3Vector2VxVector3(xxx.X));
 
                 Vx::VxCollisionGeometry* vortexCollisionGeom=_createVortexCollisionGeometry(universe,geomInfo,vortexGeom,tm,floatParams,intParams);
@@ -275,7 +275,7 @@ CCollShapeDyn_vortex::CCollShapeDyn_vortex(CDummyShape* shape,CDummyGeomProxy* g
 
                     Vx::VxTransform tm;
                     Vx::VxQuaternion quat(_inverseLocalInertiaFrame_scaled.Q(0), _inverseLocalInertiaFrame_scaled.Q(1), _inverseLocalInertiaFrame_scaled.Q(2), _inverseLocalInertiaFrame_scaled.Q(3));
-                    tm.makeRotationFromQuaternion(quat);
+                    tm.makeRotation(quat);
                     tm.setTranslation(C3Vector2VxVector3(_inverseLocalInertiaFrame_scaled.X));
 
                     Vx::VxCollisionGeometry* vortexCollisionGeom=_createVortexCollisionGeometry(universe,geomInfo,vortexGeometry,tm,floatParams,intParams);
@@ -331,7 +331,7 @@ CCollShapeDyn_vortex::CCollShapeDyn_vortex(CDummyShape* shape,CDummyGeomProxy* g
 
                 Vx::VxTransform tm;
                 Vx::VxQuaternion quat(_inverseLocalInertiaFrame_scaled.Q(0), _inverseLocalInertiaFrame_scaled.Q(1), _inverseLocalInertiaFrame_scaled.Q(2), _inverseLocalInertiaFrame_scaled.Q(3));
-                tm.makeRotationFromQuaternion(quat);
+                tm.makeRotation(quat);
                 tm.setTranslation(C3Vector2VxVector3(_inverseLocalInertiaFrame_scaled.X));
 
                 Vx::VxCollisionGeometry* vortexCollisionGeom=_createVortexCollisionGeometry(universe,geomInfo,vortexGeometry,tm,floatParams,intParams);
@@ -399,7 +399,7 @@ CCollShapeDyn_vortex::CCollShapeDyn_vortex(CDummyShape* shape,CDummyGeomProxy* g
 
                     Vx::VxTransform tm;
                     Vx::VxQuaternion quat(_inverseLocalInertiaFrame_scaled.Q(0), _inverseLocalInertiaFrame_scaled.Q(1), _inverseLocalInertiaFrame_scaled.Q(2), _inverseLocalInertiaFrame_scaled.Q(3));
-                    tm.makeRotationFromQuaternion(quat);
+                    tm.makeRotation(quat);
                     tm.setTranslation(C3Vector2VxVector3(_inverseLocalInertiaFrame_scaled.X));
 
                     Vx::VxCollisionGeometry* vortexCollisionGeom=_createVortexCollisionGeometry(universe,geomInfo,vortexGeometry,tm,floatParams,intParams);
@@ -460,7 +460,7 @@ CCollShapeDyn_vortex::CCollShapeDyn_vortex(CDummyShape* shape,CDummyGeomProxy* g
 
                 Vx::VxTransform tm;
                 Vx::VxQuaternion quat(_inverseLocalInertiaFrame_scaled.Q(0), _inverseLocalInertiaFrame_scaled.Q(1), _inverseLocalInertiaFrame_scaled.Q(2), _inverseLocalInertiaFrame_scaled.Q(3));
-                tm.makeRotationFromQuaternion(quat);
+                tm.makeRotation(quat);
                 tm.setTranslation(C3Vector2VxVector3(_inverseLocalInertiaFrame_scaled.X));
 
                 Vx::VxCollisionGeometry* vortexCollisionGeom=_createVortexCollisionGeometry(universe,geomInfo,vortexGeometry,tm,floatParams,intParams);
